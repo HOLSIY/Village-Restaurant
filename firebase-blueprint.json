@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "websiteSettings": {
+      "title": "Website Settings",
+      "description": "Global settings for Village Cafe branding, colors, contact details",
+      "type": "object",
+      "properties": {
+        "restaurantName": { "type": "string" },
+        "logoText": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "openingHours": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "accentColor": { "type": "string" }
+      },
+      "required": ["restaurantName", "phone", "address"]
+    },
+    "content": {
+      "title": "Website Content",
+      "description": "Customizable wording and imagery across sections",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "heroDesc": { "type": "string" },
+        "heroImage": { "type": "string" },
+        "aboutTitle": { "type": "string" },
+        "aboutStory": { "type": "string" },
+        "aboutImage": { "type": "string" }
+      },
+      "required": ["heroTitle"]
+    },
+    "menuItems": {
+      "title": "Menu Item",
+      "description": "Food and drink items served at Village Cafe",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "priceType": { "type": "string" },
+        "price": { "type": "number" },
+        "sizes": { "type": "object" },
+        "halfFull": { "type": "object" },
+        "image": { "type": "string" },
+        "available": { "type": "boolean" }
+      },
+      "required": ["name", "category", "priceType"]
+    },
+    "orders": {
+      "title": "Customer Order",
+      "description": "Incoming food order placed by customers",
+      "type": "object",
+      "properties": {
+        "customerFirstName": { "type": "string" },
+        "customerLastName": { "type": "string" },
+        "phone": { "type": "string" },
+        "items": { "type": "array" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["customerFirstName", "phone", "items"]
+    },
+    "reviews": {
+      "title": "Customer Review",
+      "description": "Reviews and ratings",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "image": { "type": "string" },
+        "approved": { "type": "boolean" }
+      },
+      "required": ["name", "rating", "comment"]
+    },
+    "gallery": {
+      "title": "Gallery Image",
+      "description": "Images showcasing restaurant ambiance and food",
+      "type": "object",
+      "properties": {
+        "imageUrl": { "type": "string" },
+        "title": { "type": "string" }
+      },
+      "required": ["imageUrl"]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function for authentication check
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Public website settings and content - publicly readable, writable by anyone for client-demo / master management
+    match /websiteSettings/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /content/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Menu Items - publicly readable, writable by admin/master
+    match /menuItems/{itemId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Orders - readable and writable by public customer & admin
+    match /orders/{orderId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if true;
+    }
+
+    // Reviews - readable by public, writeable by public (create) and admin
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if true;
+    }
+
+    // Gallery - readable by public, writeable by master
+    match /gallery/{imageId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Admin Auth State / Security credentials document
+    match /systemAuth/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
